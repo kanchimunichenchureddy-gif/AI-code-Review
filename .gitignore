@@ -1,0 +1,17 @@
+# Python & Virtualenv
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Databases & Cache
+*.db
+*.sqlite3
+.pytest_cache/
+.coverage
+
+# OS generated
+.DS_Store
+Thumbs.db
