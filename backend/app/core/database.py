@@ -1,13 +1,20 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
+
 from backend.app.core.config import settings
 
-# Handle SQLite vs MySQL/PostgreSQL connection string setup
-connect_args = {"check_same_thread": False} if settings.DATABASE_URL.startswith("sqlite") else {}
+
+connect_args = (
+    {"check_same_thread": False}
+    if settings.DATABASE_URL.startswith("sqlite")
+    else {}
+)
 
 engine = create_engine(
     settings.DATABASE_URL,
     connect_args=connect_args,
+    pool_pre_ping=True,
+    pool_recycle=3600,
     echo=False,
 )
 

@@ -10,6 +10,8 @@ from backend.app.models.finding import (
     ComplexityMetricModel,
     FeedbackModel,
 )
+from backend.app.models.ast_node import ASTNodeModel
+from backend.app.models.similarity import SimilarityResultModel
 
 __all__ = [
     "Base",
@@ -27,4 +29,6 @@ __all__ = [
     "SecurityFindingModel",
     "ComplexityMetricModel",
     "FeedbackModel",
+    "ASTNodeModel",
+    "SimilarityResultModel",
 ]

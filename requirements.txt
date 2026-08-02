@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+pydantic-settings
+python-jose
+bcrypt
+python-multipart
+pymysql
+tree-sitter
+tree-sitter-python
+tree-sitter-javascript
+tree-sitter-java
+tree-sitter-c
+tree-sitter-cpp
+pytest
+httpx

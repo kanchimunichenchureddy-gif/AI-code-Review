@@ -13,15 +13,21 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
     
     # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./code_reviewer.db")
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        "mysql+pymysql://code_reviewer:code_reviewer_password@127.0.0.1:3306/code_reviewer?charset=utf8mb4",
+    )
     
     # CORS
     CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:5173",
+        "http://localhost:5174",
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
     ]
+    CORS_ORIGIN_REGEX: str = r"http://(localhost|127\.0\.0\.1):\d+"
     
     # Docker Sandbox Limits
     SANDBOX_TIMEOUT_SECONDS: int = 5

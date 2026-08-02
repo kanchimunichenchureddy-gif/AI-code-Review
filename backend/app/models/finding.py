@@ -9,7 +9,7 @@ class StaticFindingModel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     submission_id = Column(Integer, ForeignKey("submissions.id", ondelete="CASCADE"), nullable=False)
-    file_path = Column(String(255), nullable=False)
+    file_path = Column(String(1024), nullable=False)
     rule_id = Column(String(100), nullable=False)
     category = Column(String(100), nullable=False)
     severity = Column(String(50), nullable=False)  # LOW, MEDIUM, HIGH, CRITICAL
@@ -28,7 +28,7 @@ class SecurityFindingModel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     submission_id = Column(Integer, ForeignKey("submissions.id", ondelete="CASCADE"), nullable=False)
-    file_path = Column(String(255), nullable=False)
+    file_path = Column(String(1024), nullable=False)
     cve_or_rule = Column(String(100), nullable=False)  # SQLi, Command Injection, etc.
     vulnerability_type = Column(String(100), nullable=False)
     severity = Column(String(50), nullable=False)
@@ -44,7 +44,7 @@ class ComplexityMetricModel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     submission_id = Column(Integer, ForeignKey("submissions.id", ondelete="CASCADE"), nullable=False)
-    file_path = Column(String(255), nullable=False)
+    file_path = Column(String(1024), nullable=False)
     function_name = Column(String(255), nullable=True)
     cyclomatic_complexity = Column(Integer, nullable=False)
     cognitive_complexity = Column(Integer, nullable=False)
@@ -66,7 +66,7 @@ class FeedbackModel(Base):
     why_text = Column(Text, nullable=False)
     how_to_fix_text = Column(Text, nullable=False)
     example_code = Column(Text, nullable=True)
-    file_path = Column(String(255), nullable=True)
+    file_path = Column(String(1024), nullable=True)
     line_number = Column(Integer, nullable=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 

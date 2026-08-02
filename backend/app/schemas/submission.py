@@ -13,6 +13,7 @@ class SubmissionFileCreate(BaseModel):
 class SubmissionFileResponse(SubmissionFileCreate):
     id: int
     submission_id: int
+    file_hash: Optional[str] = None
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -82,6 +83,9 @@ class SubmissionResponse(BaseModel):
     assignment_id: int
     student_id: int
     status: SubmissionStatus
+    attempt_number: int
+    parent_submission_id: Optional[int] = None
+    storage_path: Optional[str] = None
     score: Optional[float] = None
     plagiarism_similarity_tier: str
     created_at: datetime
@@ -90,5 +94,15 @@ class SubmissionResponse(BaseModel):
     security_findings: List[SecurityFindingResponse] = []
     complexity_metrics: List[ComplexityMetricResponse] = []
     feedback: List[FeedbackResponse] = []
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class SubmissionHistoryResponse(BaseModel):
+    id: int
+    attempt_number: int
+    status: SubmissionStatus
+    score: Optional[float] = None
+    created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
